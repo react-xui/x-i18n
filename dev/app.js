@@ -19,7 +19,29 @@ var appElement = document.getElementById('example');
 // }
 // Instance.contextType = I18n;
 
-
+class Test extends React.Component {
+  renderContent=(local,localCode)=>{
+    console.log(arguments)
+    debugger;
+    // let local = this.context;
+    console.log(local)
+    // return  <Instance local={local}></Instance>
+    return (
+    <div>
+    {local.submit}
+    </div>
+    )
+  }
+  render(){
+    return (
+      <div>
+        <I18n>
+        {this.renderContent}
+        </I18n>
+      </div>
+    )
+  }
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -43,6 +65,7 @@ class App extends React.Component {
     {local.submit}
     <button onClick={this.change.bind(this,'en')}>en</button>
     <button onClick={this.change.bind(this,'zh_CN')}>zh_CN</button>
+    
     </div>
     )
   }

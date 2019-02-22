@@ -170,15 +170,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _props = this.props,
 	          componentName = _props.componentName,
 	          defaultValue = _props.defaultValue;
+	      //默认语言包如果未传值，则使用i18n的默认包
+	      //如果顶层还有i18n的，进行合并
+	      // debugger;
 
-	      debugger;
-	      return _extends({}, local[componentName || 'global'], defaultValue[componentName || 'global']);
+	      return _extends({}, local[componentName || 'global'], defaultValue || {});
 	    }
 	    //当前语言代码
 
 	  }, {
 	    key: 'getLocalCode',
-	    value: function getLocalCode() {}
+	    value: function getLocalCode() {
+	      var local = this.context.local;
+
+	      return local.local;
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -1431,7 +1437,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        last: '最后一页',
 	        first: '第一页',
 	        go: '第',
-	        sum: '共'
+	        sum: '共',
+	        pageNum: '页码数'
+	    },
+	    Dialog: {
+	        close: '关闭',
+	        submit: '确认',
+	        cancel: '返回'
 	    }
 	};
 

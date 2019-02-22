@@ -11,6 +11,12 @@ export default {
         last:'last',
         first:'first',
         go:'go',
-        sum:'sum'
+        sum:'sum',
+        pageNum:'pageNum'
+    },
+    Dialog:{
+        close:'close',
+        submit:'submit',
+        cancel:'cancel'
     }
 }

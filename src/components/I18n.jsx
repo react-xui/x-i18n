@@ -21,15 +21,18 @@ export default class LocalReceiver extends Component{
   getLocalData(){
     let {local} = this.context;
     let {componentName,defaultValue} = this.props;
-debugger;
+    //默认语言包如果未传值，则使用i18n的默认包
+    //如果顶层还有i18n的，进行合并
+// debugger;
     return {
       ...local[componentName||'global'],
-      ...defaultValue[componentName||'global'],
+      ...defaultValue||{},
     };
   }
   //当前语言代码
   getLocalCode(){
-
+    let {local} = this.context;
+    return local.local;
   }
   render(){
     return (
