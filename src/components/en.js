@@ -11,7 +11,7 @@ export default {
         last:'last',
         first:'first',
         go:'go',
-        sum:'sum',
+        sum:'total',
         pageNum:'pageNum'
     },
     Dialog:{
