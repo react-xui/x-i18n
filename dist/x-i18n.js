@@ -56,15 +56,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _I18n = __webpack_require__(1);
-
-	var _I18n2 = _interopRequireDefault(_I18n);
-
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { default: obj };
-	}
-
-	module.exports = _I18n2.default; //使用module.exports时，从es6到es5生成的dist不会出现export.default的问题.
 	/*
 	 * Created with Visual Studio Code.
 	 * github: https://github.com/React-Plugin/x-seed
@@ -73,6 +64,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Time: 20:00:00
 	 * Contact: 55342775@qq.com
 	 */
+	// import I18n,{I18nContext} from './components/I18n';
+
+	var obj = __webpack_require__(1);
+	// console.log(obj)
+	module.exports = obj;
+	// module.exports.default = I18n;  //使用module.exports时，从es6到es5生成的dist不会出现export.default的问题.
+	// module.exports = I18nContext;
 
 /***/ }),
 /* 1 */
@@ -85,6 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.I18nContext = undefined;
 
 	var _extends = Object.assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -147,7 +146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Contact: 55342775@qq.com
 	   */
 
-	var I18n = _react2.default.createContext({
+	var I18nContext = exports.I18nContext = _react2.default.createContext({
 	  local: _zh_CN2.default
 	});
 	// export default I18n;
@@ -188,7 +187,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(I18n.Provider, { value: _zh_CN2.default }, this.props.children(this.getLocalData(), this.getLocalCode()));
+	      var localData = this.props.defaultValue || _zh_CN2.default;
+	      return _react2.default.createElement(I18nContext.Provider, { value: localData }, this.props.children(this.getLocalData(), this.getLocalCode()));
 	    }
 	  }]);
 
@@ -225,7 +225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// }
 
 
-	LocalReceiver.contextType = I18n;
+	LocalReceiver.contextType = I18nContext;
 	exports.default = LocalReceiver;
 
 /***/ }),

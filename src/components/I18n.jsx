@@ -10,13 +10,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import local from './zh_CN';
 
-const I18n = React.createContext({
+export const I18nContext = React.createContext({
     local
-})
+});
 // export default I18n;
-
 export default class LocalReceiver extends Component{
-  static contextType = I18n;
+  static contextType = I18nContext;
   //返回当前的语言包
   getLocalData(){
     let {local} = this.context;
@@ -35,11 +34,12 @@ export default class LocalReceiver extends Component{
     return local.local;
   }
   render(){
+    let localData = this.props.defaultValue||local;
     return (
-    <I18n.Provider value={local}>
+    <I18nContext.Provider value={localData}>
     {/* //把语言包和代码传给子组件 */}
     {this.props.children(this.getLocalData(),this.getLocalCode())}
-    </I18n.Provider>
+    </I18nContext.Provider>
     )
   }
 }
