@@ -1,6 +1,6 @@
 {
   "name": "x-i18n",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "react xui i18n国际化",
   "main": "./lib/index.js",
   "repository": {
